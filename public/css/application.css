@@ -15,3 +15,11 @@
 #header-buttons {
   list-style-type: none;
 }
+
+body {
+  padding:20px;
+}
+
+#header-right form {
+  display: inline;
+}

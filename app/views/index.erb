@@ -1,4 +1,11 @@
 
 <%= erb :'/partials/_header', layout: false %>
 
-<h1> This is the Index! </h1>
+<h2> Most Recent Questions </h2>
+<% top_ten_questions = Question.order(:created_at).take(10) %>
+
+<% top_ten_questions.each do |question| %>
+  <p><h4><%=question.title%></h4></p>
+  <p><%=question.body%></p>
+  <hr>
+<% end %>
