@@ -20,16 +20,29 @@ form for providing new answer -->
       <li><%=comment.body%></li>
       <!--should this go in controller or model?-->
       - <%=User.find(comment.user_id).username%>
-      <%end%>
+    <%end%>
   </ul>
 </h6>
 </p>
 
 <p>
+    <h2>Answers:<%@answers.each do |answer| %></h2>
   <ul>
-  <h2>Answers:<%@answers.each do |answer| %></h2>
     <li><%=answer.body%></li>
     <!--should this go in controller or model?-->
     - <%=User.find(answer.user_id).username%>
-    <%end%>
   </ul>
+<p>
+    <!-- these are the comments with the answer id -->
+  <h6>Comments:<br>
+    <ul>
+      <%comments_to_answer = Comment.where(commentable_id: answer.id, commentable_type: Answer)%>
+      <%@comments.each do |comment|%>
+        <li><%=comment.body%></li>
+        <!--should this go in controller or model?-->
+        - <%=User.find(comment.user_id).username%>
+      <%end%>
+    <%end%>
+    </ul>
+  </h6>
+</p>
