@@ -19,6 +19,9 @@
   <title>Test Title</title>
 </head>
 <body>
+  <%if @error %>
+    <%= @error %>
+  <% end %>
   <%= yield %>
 </body>
 </html>
