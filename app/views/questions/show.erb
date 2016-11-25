@@ -1,0 +1,35 @@
+<!-- show one question by id
+-show comments with that question id
+  -comments new form
+
+show answers
+  -show comments with that answer id
+  -comments new form
+
+form for providing new answer -->
+
+<h1>Question: <%=@question.title%></h1>
+<p>
+  <%=@question.body%>
+</p>
+<p>
+  <!-- these are the comments with the question id -->
+  <h6>Comments:<br>
+  <ul>
+    <%@comments.each do |comment|%>
+      <li><%=comment.body%></li>
+      <!--should this go in controller or model?-->
+      - <%=User.find(comment.user_id).username%>
+      <%end%>
+  </ul>
+</h6>
+</p>
+
+<p>
+  <ul>
+  <h2>Answers:<%@answers.each do |answer| %></h2>
+    <li><%=answer.body%></li>
+    <!--should this go in controller or model?-->
+    - <%=User.find(answer.user_id).username%>
+    <%end%>
+  </ul>
