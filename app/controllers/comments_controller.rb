@@ -15,18 +15,18 @@ post '/comments' do
   end
 end
 
-get 'questions/:id/edit' do
-  erb :'/questions/edit'
+get 'comments/:id/edit' do
+  erb :'/comments/edit'
 end
 
-put 'questions/:id' do
-  @question = Question.find(params[:id])
-  @question.update(params[:question])
+put 'comments/:id' do
+  @comment = Comment.find(params[:id])
+  @comment.update(params[:comment])
   erb :'/questions/show'
 end
 
-delete 'questions/:id' do
-  @question = Question.find(params[:id])
-  @question.destroy
+delete 'comments/:id' do
+  @comment = Comment.find(params[:id])
+  @comment.destroy
   redirect '/'
 end

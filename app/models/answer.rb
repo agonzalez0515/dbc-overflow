@@ -6,5 +6,4 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates_presence_of :body
-
 end
