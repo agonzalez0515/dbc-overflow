@@ -6,6 +6,7 @@ get 'questions/:id' do
   @value_total = votes_value(@votes)
   @question_comments = @question.comments
   @question_answers = @question.answers
+  # @answers_comments =
   # find answer's comments in a view
   # Instead of method for it in answer's model but maybe we have to set it in a view?
   erb :'/questions/show'
