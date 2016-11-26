@@ -46,8 +46,9 @@
                 <%end%>
                 <br>
                 Add a comment to this answer:
-                <form method='POST' action='/answers/:answer_id/comments'>
-                    <input type='text' name='username' placeholder='username'>
+                <form method='POST' action='/answers/<%=answer.id%>/comments'>
+                    <input type='hidden' name='answer_id' value=<%= answer.id %>>
+                    <input type='hidden' name='commentable_type' value='Answer'>
                     <input type='text' name='body' placeholder='comment'>
                     <input type='submit' value='Submit'>
                 </form>
