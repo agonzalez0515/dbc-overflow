@@ -61,8 +61,8 @@
     <p>
         Provide an answer:<br>
         <form method='POST' action='/answers'>
-            <input type='text' name='username' placeholder='username'>
             <input type='text' name='body' placeholder='answer'>
+            <input type='hidden' name='question_id' value=<%= @question.id %> >
             <input type='submit' value='Submit'>
         </form>
     </p>

@@ -6,10 +6,13 @@ get 'answers/new' do
 end
 
 # create answer to question
-post '/questions/:id/answers' do
-  @answer = Answer.new(params[:answer], question_id: params[:id], user_id: current_user.id)
+post '/answers' do
+  @user = User.find(session[:id])
+  @answer = Answer.new({body: params[:body],
+            question_id: params[:question_id],
+            user_id: @user.id})
   if @answer.save
-    redirect "/questions/#{params[:id]}"
+    redirect "/questions/#{params[:question_id]}"
   else
     @error = "Something went wrong! Please, try again"
     redirect '/'
