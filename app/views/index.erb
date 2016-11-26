@@ -1,4 +1,28 @@
 
 <%= erb :'/partials/_header', layout: false %>
 
-<h1> This is the Index! </h1>
+<h2> Most Recent Questions </h2>
+<hr>
+<% top_ten_questions = Question.order(:created_at).take(10) %>
+
+<% top_ten_questions.each do |question| %>
+<div id="index-question-tables">
+
+  <table>
+    <tr>
+      <td><%=question.count_votes%></td>
+      <td><%=question.answers.count%></td>
+      <td><a href="/show/<%=question.id%>"><%=question.title%></a></td>
+    </tr>
+    <tr>
+      <td>votes</td>
+      <td>answers</td>
+      <td>Asked: <%=question.created_at%></td>
+    </tr>
+  </table>
+
+  <!-- <p><h4><%=question.title%></h4></p>
+  <p><%=question.body%></p> -->
+  <hr class="q-separator">
+</div>
+<% end %>

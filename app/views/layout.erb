@@ -19,7 +19,11 @@
   <title>Test Title</title>
 </head>
 <body>
-  <%= erb :'/partials/_header' %>
+
+  <%if @error %>
+    <%= @error %>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>
