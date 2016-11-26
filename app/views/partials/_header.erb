@@ -4,8 +4,7 @@
      <h2>Stack Overflow Junior</h2>
      <% if session[:id] %>
        <% @current_user = User.find(session[:id]) %>
-       <h3>Welcome <%= @current_user.first_name %>!</h3>
-       <strong><a href="/users/<%=@current_user.id%>">Account Page</a></strong>
+       <h3>Welcome <%= @current_user.username %>!</h3>
      <% end %>
    </td>
 
