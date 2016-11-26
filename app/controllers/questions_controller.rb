@@ -1,11 +1,10 @@
-get 'questions/:id' do
+get '/questions/:id' do
   @question = Question.find(params[:id])
   # gives back total votes given for a specific question
   @votes = @question.votes
-  # we can use this method inside our question/show view or here
-  @value_total = votes_value(@votes)
   @question_comments = @question.comments
   @question_answers = @question.answers
+
   # @answers_comments =
   # find answer's comments in a view
   # Instead of method for it in answer's model but maybe we have to set it in a view?

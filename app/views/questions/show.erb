@@ -6,7 +6,7 @@
     <!-- these are the comments with the question id -->
     <h6>Comments:<br>
         <ul>
-            <%@comments.each do |comment|%>
+            <%@question_comments.each do |comment|%>
             <li><%=comment.body%></li>
             <!--should this go in controller or model?-->
             -
@@ -18,11 +18,12 @@
     <form method='POST' action='/comments'>
         <input type='text' name='username' placeholder='username'>
         <input type='text' name='body' placeholder='comment'>
+        <input type='submit' value='Submit'>
     </form>
 </p>
 
 <p>
-    <h2>Answers:<%@answers.each do |answer| %></h2>
+    <h2>Answers:<%@question_answers.each do |answer| %></h2>
     <ul>
         <li><%=answer.body%></li>
         <!--should this go in controller or model?-->
@@ -34,7 +35,7 @@
         <h6>Comments:<br>
             <ul>
                 <%comments_to_answer = Comment.where(commentable_id: answer.id, commentable_type: Answer)%>
-                <%@comments.each do |comment|%>
+                <%comments_to_answer.each do |comment|%>
                 <li><%=comment.body%></li>
                 <!--should this go in controller or model?-->
                 -
@@ -45,6 +46,7 @@
                 <form method='POST' action='/answers/:answer_id/comments'>
                     <input type='text' name='username' placeholder='username'>
                     <input type='text' name='body' placeholder='comment'>
+                    <input type='submit' value='Submit'>
                 </form>
                 <br>
                 <%end%>
@@ -57,5 +59,6 @@
         <form method='POST' action='/answers'>
             <input type='text' name='username' placeholder='username'>
             <input type='text' name='body' placeholder='answer'>
+            <input type='submit' value='Submit'> 
         </form>
     </p>

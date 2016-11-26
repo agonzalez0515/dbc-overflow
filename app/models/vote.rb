@@ -7,10 +7,11 @@ class Vote < ActiveRecord::Base
   belongs_to :answer
 
  # method that counts total value of votes given for a particular question
-  def votes_value(votes)
-    @votes_value = 0
-    @votes.each do |vote|
-    @votes_value += vote.value
+  def count_votes
+    count = 0
+    self.votes.each do |vote|
+    count += vote.value
     end
+    count
   end
 end
