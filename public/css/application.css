@@ -15,3 +15,22 @@
 #header-buttons {
   list-style-type: none;
 }
+
+body {
+  padding: 20px;
+}
+
+#header-right form {
+  display: inline;
+}
+
+#index-question-tables {
+  width: 60%;
+  margin: auto;
+}
+
+#index-question-tables td {
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
