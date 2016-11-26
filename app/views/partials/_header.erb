@@ -1,0 +1,12 @@
+<div >
+  <a href="/users">Home</a>
+  <% if current_user %>
+    <form action='/sessions' method= "POST" class="post-form">
+      <input type="hidden" value ="delete" name="_method">
+      <input type="submit" value="Log Out">
+    </form>
+    <% else %>
+      <a href="/users/new">Create Account</a>
+      <a href="/sessions/login">Login</a>
+  <% end %>
+</div>
