@@ -1,60 +1,61 @@
-
-
-<h1>Question: <%=@question.title%></h1>
+<h1>Question:<%=@question.title%></h1>
 <p>
-  <%=@question.body%>
+    <%=@question.body%>
 </p>
 <p>
-  <!-- these are the comments with the question id -->
-  <h6>Comments:<br>
-  <ul>
-    <%@comments.each do |comment|%>
-      <li><%=comment.body%></li>
-      <!--should this go in controller or model?-->
-      - <%=User.find(comment.user_id).username%>
-    <%end%>
-  </ul>
-</h6>
-Add a comment:
-<form method='POST' action='/comments'>
-  <input type='text' name='username' placeholder='username'>
-  <input type='text' name='body' placeholder='comment'>
-</form>
+    <!-- these are the comments with the question id -->
+    <h6>Comments:<br>
+        <ul>
+            <%@comments.each do |comment|%>
+            <li><%=comment.body%></li>
+            <!--should this go in controller or model?-->
+            -
+            <%=User.find(comment.user_id).username%>
+            <%end%>
+        </ul>
+    </h6>
+    Add a comment:
+    <form method='POST' action='/comments'>
+        <input type='text' name='username' placeholder='username'>
+        <input type='text' name='body' placeholder='comment'>
+    </form>
 </p>
 
 <p>
     <h2>Answers:<%@answers.each do |answer| %></h2>
-  <ul>
-    <li><%=answer.body%></li>
-    <!--should this go in controller or model?-->
-    - <%=User.find(answer.user_id).username%>
-  </ul>
-<p>
-    <!-- these are the comments with the answer id -->
-  <h6>Comments:<br>
     <ul>
-      <%comments_to_answer = Comment.where(commentable_id: answer.id, commentable_type: Answer)%>
-      <%@comments.each do |comment|%>
-        <li><%=comment.body%></li>
+        <li><%=answer.body%></li>
         <!--should this go in controller or model?-->
-        - <%=User.find(comment.user_id).username%>
-      <%end%>
-      <br>
-      Add a comment to this answer:
-      <form method='POST' action='/answers/:answer_id/comments'>
-        <input type='text' name='username' placeholder='username'>
-        <input type='text' name='body' placeholder='comment'>
-      </form>
-      <br>
-    <%end%>
+        -
+        <%=User.find(answer.user_id).username%>
     </ul>
-  </h6>
-</p>
+    <p>
+        <!-- these are the comments with the answer id -->
+        <h6>Comments:<br>
+            <ul>
+                <%comments_to_answer = Comment.where(commentable_id: answer.id, commentable_type: Answer)%>
+                <%@comments.each do |comment|%>
+                <li><%=comment.body%></li>
+                <!--should this go in controller or model?-->
+                -
+                <%=User.find(comment.user_id).username%>
+                <%end%>
+                <br>
+                Add a comment to this answer:
+                <form method='POST' action='/answers/:answer_id/comments'>
+                    <input type='text' name='username' placeholder='username'>
+                    <input type='text' name='body' placeholder='comment'>
+                </form>
+                <br>
+                <%end%>
+            </ul>
+        </h6>
+    </p>
 
-<p>
-  Provide an answer:<br>
-  <form method='POST' action='/answers'>
-    <input type='text' name='username' placeholder='username'>
-    <input type='text' name='body' placeholder='answer'>
-  </form>
-</p>
+    <p>
+        Provide an answer:<br>
+        <form method='POST' action='/answers'>
+            <input type='text' name='username' placeholder='username'>
+            <input type='text' name='body' placeholder='answer'>
+        </form>
+    </p>
