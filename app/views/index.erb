@@ -1,6 +1,10 @@
 
 <%= erb :'/partials/_header', layout: false %>
 
+<%if @errors%>
+   <span><%=@errors%>, Please Try Again (or Register)</span>
+<%end%>
+
 <h2> Most Recent Questions </h2>
 <hr>
 <% top_ten_questions = Question.order(:created_at).take(10) %>
@@ -10,8 +14,9 @@
 
   <table>
     <tr>
+      <td><%=question.count_votes%></td>
       <td><%=question.answers.count%></td>
-      <td><a href="/show/<%=question.id%>"><%=question.title%></a></td>
+      <td><a href="/questions/<%=question.id%>"><%=question.title%></a></td>
     </tr>
     <tr>
       <td>votes</td>

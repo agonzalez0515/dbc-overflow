@@ -7,4 +7,13 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body
   validates_presence_of :title
+
+  # method that counts total value of votes given for a particular question
+   def count_votes
+     count = 0
+     self.votes.each do |vote|
+     count += vote.value
+     end
+     count
+   end
 end

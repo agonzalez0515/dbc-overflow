@@ -6,7 +6,13 @@ get 'comments/new' do
 end
 
 post '/comments' do
-  @comment = Comment.new(params[:comment], user_id: current_user.id)
+  # @comment = Comment.new(params[:comment], user_id: current_user.id)
+  @question = Question.find(params[:question_id])
+  @user = User.find(session[:id])
+  @comment = Comment.new({body:params[:comment],
+                          user_id: @user.id,#params[:user_id],
+                          commentable_id: @question.id,
+                          commentable_type: params[:commentable_type]})
   if @comment.save
     redirect "/questions/#{@question.id}"
   else
