@@ -1,3 +1,5 @@
+<%= erb :'/partials/_header', layout: false %>
+
 <h1>Question:<%=@question.title%></h1>
 <p>
     <%=@question.body%>
@@ -16,8 +18,9 @@
     </h6>
     Add a comment:
     <form method='POST' action='/comments'>
-        <input type='text' name='username' placeholder='username'>
-        <input type='text' name='body' placeholder='comment'>
+        <input type='hidden' name='question_id' value=<%= @question.id %>>
+        <input type='hidden' name='commentable_type' value='Question'>
+        <input type='text' name='comment' placeholder='comment'>
         <input type='submit' value='Submit'>
     </form>
 </p>
@@ -43,8 +46,9 @@
                 <%end%>
                 <br>
                 Add a comment to this answer:
-                <form method='POST' action='/answers/:answer_id/comments'>
-                    <input type='text' name='username' placeholder='username'>
+                <form method='POST' action='/answers/<%=answer.id%>/comments'>
+                    <input type='hidden' name='answer_id' value=<%= answer.id %>>
+                    <input type='hidden' name='commentable_type' value='Answer'>
                     <input type='text' name='body' placeholder='comment'>
                     <input type='submit' value='Submit'>
                 </form>
@@ -57,8 +61,8 @@
     <p>
         Provide an answer:<br>
         <form method='POST' action='/answers'>
-            <input type='text' name='username' placeholder='username'>
             <input type='text' name='body' placeholder='answer'>
-            <input type='submit' value='Submit'> 
+            <input type='hidden' name='question_id' value=<%= @question.id %> >
+            <input type='submit' value='Submit'>
         </form>
     </p>
