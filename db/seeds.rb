@@ -7,7 +7,7 @@ Comment.delete_all
 
 20.times do |idx|
   User.create({:username => Faker::Internet.user_name,
-             :password_hash => 'password'})
+             :password => 'password'})
   end
 
 20.times do |idx|
