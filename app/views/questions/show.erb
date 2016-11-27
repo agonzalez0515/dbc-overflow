@@ -9,8 +9,7 @@
         <input type="hidden" name="votable_id" value="<%=@question.id%>">
         <input type="hidden" name="user_id" value="<%=session[:id]%>">
         <input type="hidden" name="votable_type" value="Question">
-        <!-- <input class="button-upvote" type="submit" name="submit" style="background-color:#89afed; display:block; margin:auto" value="Upvote"></td> -->
-        <input class="button-upvote" type="submit"value = " "></td>
+        <input class="button-upvote" type="submit" value= " "></td>
       </form>
     <td rowspan=3 style="background-color:#c9e8f2; padding: 5px">
     <%=@question.body%>
@@ -28,7 +27,7 @@
         <input type="hidden" name="votable_id" value="<%=@question.id%>">
         <input type="hidden" name="user_id" value="<%=session[:id]%>">
         <input type="hidden" name="votable_type" value="Question">
-        <input class="button-downvote" type="submit" value=" "></td>
+        <input class="button-downvote" type="submit" name=" "></td>
       </form>
     </td>
   </tr>
@@ -66,7 +65,7 @@
             <input type="hidden" name="user_id" value="<%=session[:id]%>">
             <input type="hidden" name="votable_type" value="Answer">
             <!-- <input class="button-upvote" type="submit" name="submit" style="background-color:#89afed; display:block; margin:auto" value="Upvote"></td> -->
-            <input class="button-upvote" type="submit"value = " "></td>
+            <input class="button-upvote" type="submit" value= " "></td>
           </form>
         <td rowspan=3 style="background-color:#e8e5e5; padding: 5px">
         <%=answer.body%>
@@ -84,7 +83,7 @@
             <input type="hidden" name="votable_id" value="<%=answer.id%>">
             <input type="hidden" name="user_id" value="<%=session[:id]%>">
             <input type="hidden" name="votable_type" value="Answer">
-            <input class="button-downvote" type="submit" name=" " ></td>
+            <input class="button-downvote" type="submit" value=" " ></td>
           </form>
         </td>
       </tr>
