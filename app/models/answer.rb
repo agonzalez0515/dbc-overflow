@@ -6,4 +6,12 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates_presence_of :body
+
+  def count_votes
+    count = 0
+    self.votes.each do |vote|
+    count += vote.value
+    end
+    count
+  end
 end
