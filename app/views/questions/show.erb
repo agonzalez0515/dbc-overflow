@@ -63,9 +63,9 @@
           <form class="" action="/answers/<%=answer.id%>/votes" method="post">
             <input type="hidden" name="vote_val" value="1">
             <input type="hidden" name="votable_id" value="<%=answer.id%>">
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="user_id" value="<%=session[:id]%>">
             <input type="hidden" name="votable_type" value="Answer">
-            <!-- <input class="button-upvote" type="submit" name="submit" style="background-color:#89afed; display:block; margin:auto" value="Upvote"></td> -->
             <input class="button-upvote" type="submit"value = " "></td>
           </form>
         <td rowspan=3 style="background-color:#e8e5e5; padding: 5px">
@@ -81,10 +81,11 @@
         <td>
           <form class="" action="/answers/<%=answer.id%>/votes" method="post">
             <input type="hidden" name="vote_val" value="-1">
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="votable_id" value="<%=answer.id%>">
             <input type="hidden" name="user_id" value="<%=session[:id]%>">
             <input type="hidden" name="votable_type" value="Answer">
-            <input class="button-downvote" type="submit" name=" " ></td>
+            <input class="button-downvote" type="submit" value=" " ></td>
           </form>
         </td>
       </tr>
