@@ -5,13 +5,24 @@
    <span><%=@errors%>, Please Try Again (or Register)</span>
 <%end%>
 
+<div class="ask-question-form">
+  <form class="new-question" action="/questions" method="post">
+    <input type="hidden" name="user_id" value ="<%= session[:id] %>">
+    <input type="text" name="title" placeholder="Enter your title here..."><br>
+    <textarea rows='4' cols='50' name="question" placeholder="Enter your question here..."></textarea>
+    <input type="submit" name="submit" value="Post Question">
+  </form>
+</div>
+  <hr>
+  <br>
+
 <h2> Most Recent Questions </h2>
 <hr>
-<% top_ten_questions = Question.order(:created_at).take(10) %>
+<% top_ten_questions = Question.order(:created_at).reverse.take(10) %>
 
 <% top_ten_questions.each do |question| %>
-<div id="index-question-tables">
 
+<div id="index-question-tables">
   <table>
     <tr>
       <td><%=question.count_votes%></td>

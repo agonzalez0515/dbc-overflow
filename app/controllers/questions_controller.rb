@@ -16,7 +16,9 @@ get 'questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question], user_id: current_user.id)
+  @question = Question.new({body: params[:question],
+                            title: params[:title],
+                            user_id: params[:user_id]})
   if @question.save
     redirect "/questions/#{@question.id}"
   else
