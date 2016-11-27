@@ -17,3 +17,15 @@ post '/questions/:id/votes' do
     redirect "/questions/#{params[:id]}"
   end
 end
+
+post '/answers/:id/votes' do
+  @vote = Vote.new({user_id: params[:user_id],
+                    value: params[:vote_val],
+                    votable_id: params[:votable_id],
+                    votable_type: params[:votable_type]})
+  if @vote.save
+    redirect "/questions/#{params[:question_id]}"
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
+end
