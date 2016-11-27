@@ -1,0 +1,37 @@
+<table id="header-table">
+ <tr>
+   <td id="header-left">
+     <h2>Stack Overflow Junior</h2>
+     <% if session[:id] %>
+       <% @current_user = User.find(session[:id]) %>
+       <h3>Welcome <%= @current_user.username %>!</h3>
+     <% end %>
+   </td>
+
+   <td id="header-right">
+     <ul id="header-buttons">
+       <form method='GET' action='/'>
+         <li class="top-nav"><button type="submit">HOME</button></li>
+       </form>
+     <% if session[:id] %>
+       <form method='post' action='/sessions/logout'>
+         <input type = 'hidden' name='_method' value='delete'>
+         <li class="top-nav"><button type="submit">LOGOUT</button></li>
+       </form>
+     <% else %>
+       <form method='GET' action='/users/new'>
+         <li class="top-nav"><button type="submit">REGISTER</button></li>
+       </form>
+       <form method='GET' action='/sessions/login'>
+         <li class="top-nav"><button type="submit">LOGIN</button></li>
+       </form>
+     <% end %>
+      </ul>
+   </td>
+ </tr>
+ <tr>
+
+   <td colspan=2><hr><h3>Search function here</h3></td>
+ </tr>
+</table>
+<hr>

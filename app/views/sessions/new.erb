@@ -1,0 +1,15 @@
+<% if @error%>
+    <p><font color="red"> <%= @error %></font></p>
+<% end %>
+
+
+<form action='/sessions' method= 'POST'>
+  <label for="username">Username:</label>
+  <input type="username" name="username" placeholder="Username">
+  <br>
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" name="password" placeholder="Password">
+
+  <input type="submit" name="Login">
+</form>

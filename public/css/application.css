@@ -1,0 +1,52 @@
+#header-table {
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+}
+
+#header-left {
+
+}
+
+#header-right {
+  align-items: right;
+}
+
+#header-buttons {
+  list-style-type: none;
+}
+
+body {
+  padding: 20px;
+}
+
+#header-right form {
+  display: inline;
+}
+
+#index-question-tables {
+  width: 60%;
+  margin: auto;
+}
+
+#index-question-tables td {
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.button-upvote {
+    background:url(https://s11.postimg.org/6sl20t4tv/upvote.jpg) no-repeat;
+    cursor: pointer;
+    width: 50px;
+    height: 45px;
+    border: none;
+}
+
+.button-downvote {
+    background:url(https://s22.postimg.org/kc780qhup/f8ca4391f64eb8bba6fd908f4046fb.jpg) no-repeat;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
