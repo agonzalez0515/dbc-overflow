@@ -1,9 +1,38 @@
 <%= erb :'/partials/_header', layout: false %>
 
 <h1>Question:<%=@question.title%></h1>
-<p>
+<table>
+  <tr>
+    <td>
+      <form class="" action="/questions/<%=@question.id%>/votes" method="post">
+        <input type="hidden" name="vote_val" value="1">
+        <input type="hidden" name="votable_id" value="<%=@question.id%>">
+        <input type="hidden" name="user_id" value="<%=session[:id]%>">
+        <input type="hidden" name="votable_type" value="Question">
+        <input type="submit" name="submit" value="Upvote"></td>
+      </form>
+    <td rowspan=3>
     <%=@question.body%>
-</p>
+
+    <h4>- <%=User.find(@question.user_id).username %></h4>
+    </td>
+  </tr>
+  <tr>
+    <td><%=@question.count_votes%></td>
+  </tr>
+  <tr>
+    <td>
+      <form class="" action="/questions/<%=@question.id%>/votes" method="post">
+        <input type="hidden" name="vote_val" value="-1">
+        <input type="hidden" name="votable_id" value="<%=@question.id%>">
+        <input type="hidden" name="user_id" value="<%=session[:id]%>">
+        <input type="hidden" name="votable_type" value="Question">
+        <input type="submit" name="submit" value="Downvote"></td>
+      </form>
+    </td>
+  </tr>
+</table>
+
 <p>
     <!-- these are the comments with the question id -->
     <h6>Comments:<br>
