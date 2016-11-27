@@ -47,7 +47,7 @@
     </h6>
     Add a comment:
     <form method='POST' action='/comments'>
-        <input type='hidden' name='question_id' value=<%= @question.id %>>
+        <input type='hidden' name='question_id' value='<%= @question.id %>'>
         <input type='hidden' name='commentable_type' value='Question'>
         <input type='text' name='comment' placeholder='comment'>
         <input type='submit' value='Submit'>
