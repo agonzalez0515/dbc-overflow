@@ -18,7 +18,8 @@ $('.ask-question-form').on('submit', '.new-question', function(event){
     })
 
     .done(function(response){
-      $('.question-container').prepend(response);
+      // alert(response);
+      $('#index-question-tables').prepend(response);
       $('.new-question').trigger('reset');
     })
 })
@@ -28,6 +29,8 @@ $('.voting').on('submit', function(event){
 
   var url = $(this).attr('action');
   var data =$(this).serialize();
+  var id = $(this).parent().parent().siblings().children('.show-votes').attr('id')
+
 
     $.ajax({
       url: url,
@@ -36,8 +39,7 @@ $('.voting').on('submit', function(event){
     })
 
       .done(function(response){
-      // $(event).parent().parent().siblings().children('.show-votes h3').text(response);
-      $('.show-votes h3').text(response);
+      $('#'+id).children('h3').text(response);
 
       })
   })

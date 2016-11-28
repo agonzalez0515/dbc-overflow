@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <td><%=question.count_votes%></td>
+    <td><%=question.answers.count%></td>
+    <td>
+        <a href="/questions/<%=question.id%>"><%=question.title%></a>
+    </td>
+  </tr>
+  <tr>
+    <td>votes</td>
+    <td>answers</td>
+    <td>Asked:
+        <%=question.created_at%>
+    </td>
+  </tr>
+</table>
+<hr>
