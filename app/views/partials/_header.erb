@@ -31,7 +31,14 @@
    </div>
  </tr>
  <tr>
-   <td id="search-field" colspan=2><hr><h3>Search function here</h3></td>
+   <td id="search-field" colspan=2>
+     <hr>
+   <form class="search-bar" action="/questions/search" method="post">
+     <strong>Search:</strong>
+     <input type="text" name="question_string" placeholder="Search by content...">
+     <input type="text" name="user_string" placeholder="Search by user...">
+     <input class="button-style" type="submit" name="submit" value = "Search">
+   </form>
+  </td>
  </tr>
 </table>
-
