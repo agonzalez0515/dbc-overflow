@@ -4,10 +4,7 @@ module Utility
   def self.question_search(substring)
     @results = (Question.where("title like ?", "%#{substring}%") +
                 Question.where("body like ?", "%#{substring}%"))
-    p '+++++++++++++++++++'
-    p @results
-    p '+++++++++++++++++++'
-    @results.uniq!
+    @results.uniq
   end
 
   def self.user_search(substring)
