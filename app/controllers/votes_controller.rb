@@ -29,7 +29,12 @@ post '/answers/:id/votes' do
                     votable_id: params[:votable_id],
                     votable_type: params[:votable_type]})
   if @vote.save
-    redirect "/questions/#{params[:question_id]}"
+    if request.xhr?
+      answer = Answer.find_by(id: params[:votable_id])
+        answer.count_votes.to_s
+    else
+      redirect "/questions/#{params[:question_id]}"
+    end
   else
     redirect "/questions/#{params[:question_id]}"
   end

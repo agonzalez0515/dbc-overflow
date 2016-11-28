@@ -59,7 +59,7 @@
     <table>
       <tr>
         <td>
-          <form class="" action="/answers/<%=answer.id%>/votes" method="post">
+          <form class="voting" action="/answers/<%=answer.id%>/votes" method="post">
             <input type="hidden" name="vote_val" value="1">
             <input type="hidden" name="votable_id" value="<%=answer.id%>">
             <input type="hidden" name="question_id" value="<%=@question.id%>">
@@ -68,17 +68,17 @@
             <input class="button-upvote" type="submit" value= " "></td>
           </form>
         <td rowspan=3 style="background-color:#e8e5e5; padding: 5px">
-        <%=answer.body%>
+          <%=answer.body%>
 
-        <h4>- <%=User.find(answer.user_id).username %></h4>
+          <h4>- <%=User.find(answer.user_id).username %></h4>
         </td>
       </tr>
       <tr>
-        <td class="" style="text-align:center" ><h3><%=answer.count_votes%></h3></td>
+        <td id="<%=answer.id%>" class="show-votes" style="text-align:center" ><h3><%=answer.count_votes%></h3></td>
       </tr>
       <tr>
         <td>
-          <form class="" action="/answers/<%=answer.id%>/votes" method="post">
+          <form class="voting" action="/answers/<%=answer.id%>/votes" method="post">
             <input type="hidden" name="vote_val" value="-1">
             <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="votable_id" value="<%=answer.id%>">
