@@ -18,7 +18,8 @@ $('.ask-question-form').on('submit', '.new-question', function(event){
     })
 
     .done(function(response){
-      $('.question-container').prepend(response);
+      alert(response);
+      $('#index-question-tables').prepend(response);
       $('.new-question').trigger('reset');
     })
 })
