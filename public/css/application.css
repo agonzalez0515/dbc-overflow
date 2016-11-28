@@ -24,12 +24,12 @@ body {
   display: inline;
 }
 
-#index-question-tables {
+.index-question-tables {
   width: 60%;
   margin: auto;
 }
 
-#index-question-tables td {
+.index-question-tables td {
   margin: auto;
   padding-left: 15px;
   padding-right: 15px;

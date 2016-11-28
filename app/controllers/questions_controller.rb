@@ -20,7 +20,11 @@ post '/questions' do
                             title: params[:title],
                             user_id: params[:user_id]})
   if @question.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'/partials/_new-question', layout: false, locals: {question: @question}
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @error = "Something went wrong! Please, try again"
     redirect '/'

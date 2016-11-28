@@ -4,13 +4,12 @@
 <table>
   <tr>
     <td>
-      <form class="" action="/questions/<%=@question.id%>/votes" method="post">
+      <form class="voting" action="/questions/<%=@question.id%>/votes" method="post">
         <input type="hidden" name="vote_val" value="1">
         <input type="hidden" name="votable_id" value="<%=@question.id%>">
         <input type="hidden" name="user_id" value="<%=session[:id]%>">
         <input type="hidden" name="votable_type" value="Question">
-        <!-- <input class="button-upvote" type="submit" name="submit" style="background-color:#89afed; display:block; margin:auto" value="Upvote"></td> -->
-        <input class="button-upvote" type="submit"value = " "></td>
+        <input class="button-upvote" type="submit" value= " "></td>
       </form>
     <td rowspan=3 style="background-color:#c9e8f2; padding: 5px">
     <%=@question.body%>
@@ -19,16 +18,16 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:center" ><h3><%=@question.count_votes%></h3></td>
+    <td class="show-votes" style="text-align:center" ><h3><%=@question.count_votes%></h3></td>
   </tr>
   <tr>
     <td>
-      <form class="" action="/questions/<%=@question.id%>/votes" method="post">
+      <form class="voting" action="/questions/<%=@question.id%>/votes" method="post">
         <input type="hidden" name="vote_val" value="-1">
         <input type="hidden" name="votable_id" value="<%=@question.id%>">
         <input type="hidden" name="user_id" value="<%=session[:id]%>">
         <input type="hidden" name="votable_type" value="Question">
-        <input class="button-downvote" type="submit" value=" "></td>
+        <input class="button-downvote" type="submit" name=" "></td>
       </form>
     </td>
   </tr>
@@ -48,7 +47,7 @@
     </h6>
     Add a comment:
     <form method='POST' action='/comments'>
-        <input type='hidden' name='question_id' value=<%= @question.id %>>
+        <input type='hidden' name='question_id' value='<%= @question.id %>'>
         <input type='hidden' name='commentable_type' value='Question'>
         <input type='text' name='comment' placeholder='comment'>
         <input type='submit' value='Submit'>
@@ -66,7 +65,7 @@
             <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="user_id" value="<%=session[:id]%>">
             <input type="hidden" name="votable_type" value="Answer">
-            <input class="button-upvote" type="submit"value = " "></td>
+            <input class="button-upvote" type="submit" value= " "></td>
           </form>
         <td rowspan=3 style="background-color:#e8e5e5; padding: 5px">
         <%=answer.body%>
@@ -75,7 +74,7 @@
         </td>
       </tr>
       <tr>
-        <td style="text-align:center" ><h3><%=answer.count_votes%></h3></td>
+        <td class="" style="text-align:center" ><h3><%=answer.count_votes%></h3></td>
       </tr>
       <tr>
         <td>
