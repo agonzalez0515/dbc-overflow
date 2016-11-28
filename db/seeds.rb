@@ -16,13 +16,13 @@ Comment.delete_all
                   :body => Faker::Lorem.paragraph(2, false, 4))
   end
 
-50.times do |idx|
+60.times do |idx|
   Answer.create(:question_id => rand(1..20),
                 :user_id => rand(1..20),
                   :body => Faker::Hacker.say_something_smart)
   end
 
-70.times do |idx|
+80.times do |idx|
   choose = rand(1..2)
   if choose == 1
     Question.find(rand(1..20)).comments.create(
@@ -37,16 +37,16 @@ Comment.delete_all
     end
   end
 
-100.times do |idx|
+500.times do |idx|
   choose = rand(1..2)
   if choose == 1
       Question.find(rand(1..20)).votes.create(
-                   :value => [1,-1].sample,
+                   :value => [1,1,-1].sample,
                    :user_id => rand(1..20)
                    )
     elsif choose == 2
       Answer.find(rand(1..50)).votes.create(
-                   :value => [1,-1].sample,
+                   :value => [1,1,-1].sample,
                    :user_id => rand(1..20)
                    )
     end

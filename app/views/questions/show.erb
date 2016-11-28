@@ -18,7 +18,7 @@
     </td>
   </tr>
   <tr>
-    <td class="show-votes" style="text-align:center" ><h3><%=@question.count_votes%></h3></td>
+    <td id="<%=@question.id%>" class="show-votes" style="text-align:center" ><h3><%=@question.count_votes%></h3></td>
   </tr>
   <tr>
     <td>
@@ -45,16 +45,17 @@
             </p>
         </ul>
     </div>
-    <div id="add-comment">
-    <p>Add a comment:</p>
-    <form method='POST' action='/comments'>
-        <input type='hidden' name='question_id' value=<%= @question.id %>>
-        <input type='hidden' name='commentable_type' value='Question'>
-        <input type='text' name='comment' placeholder='comment'>
-        <input class="button-style" type='submit' value='Submit'>
-    </form>
-    </div>
-</p>
+    <% if session[:id] %>
+      <div id="add-comment">
+      <p>Add a comment:</p>
+        <form method='POST' action='/comments'>
+            <input type='hidden' name='question_id' value=<%= @question.id %>>
+            <input type='hidden' name='commentable_type' value='Question'>
+            <input type='text' name='comment' placeholder='comment'>
+            <input class="button-style" type='submit' value='Submit'>
+        </form>
+      </div>
+    <% end %>
 
 <p>
     <p>Answers:<%@question_answers.each do |answer| %></p>
@@ -118,13 +119,14 @@
                 <%end%>
             </ul>
     </p>
-
-    <p>
+    <% if session[:id] %>
+      <p>
         Provide an answer:<br>
         <form method='POST' action='/answers'>
-            <input type='text' name='body' placeholder='answer'>
-            <input type='hidden' name='question_id' value=<%= @question.id %> >
-            <input class="button-style" type='submit' value='Submit'>
+          <input type='text' name='body' placeholder='answer'>
+          <input type='hidden' name='question_id' value=<%= @question.id %> >
+          <input class="button-style" type='submit' value='Submit'>
         </form>
-    </p>
+      </p>
+    <% end %>
 </div>
