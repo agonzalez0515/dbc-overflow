@@ -1,37 +1,44 @@
 <table id="header-table">
  <tr>
    <td id="header-left">
-     <h2>Stack Overflow Junior</h2>
+     <h2 id="logo"><img src="https://s14.postimg.org/6ltt8tp5d/logo_dogoverflow_2.png" alt="logo" /></h2>
      <% if session[:id] %>
        <% @current_user = User.find(session[:id]) %>
-       <h3>Welcome <%= @current_user.username %>!</h3>
+       <h3 id="user">Welcome <em><%= @current_user.username %>!</em></h3>
      <% end %>
    </td>
-
+   <div id="buttons-user">
    <td id="header-right">
      <ul id="header-buttons">
-       <form method='GET' action='/'>
-         <li class="top-nav"><button type="submit">HOME</button></li>
-       </form>
+      <form method='GET' action='/'>
+        <button class="button-style" type="submit">HOME</button>
+      </form>
      <% if session[:id] %>
        <form method='post' action='/sessions/logout'>
          <input type = 'hidden' name='_method' value='delete'>
-         <li class="top-nav"><button type="submit">LOGOUT</button></li>
+         <button class="button-style" type="submit">LOGOUT</button>
        </form>
      <% else %>
        <form method='GET' action='/users/new'>
-         <li class="top-nav"><button type="submit">REGISTER</button></li>
+         <button class="button-style" type="submit">REGISTER</button>
        </form>
        <form method='GET' action='/sessions/login'>
-         <li class="top-nav"><button type="submit">LOGIN</button></li>
+        <button class="button-style" type="submit">LOGIN</button>
        </form>
      <% end %>
       </ul>
    </td>
+   </div>
  </tr>
  <tr>
-
-   <td colspan=2><hr><h3>Search function here</h3></td>
+   <td id="search-field" colspan=2>
+     <hr>
+   <form class="search-bar" action="/questions/search" method="post">
+     <strong>Search:</strong>
+     <input type="text" name="question_string" placeholder="Search by content...">
+     <input type="text" name="user_string" placeholder="Search by user...">
+     <input class="button-style" type="submit" name="submit" value = "Search">
+   </form>
+  </td>
  </tr>
 </table>
-<hr>
