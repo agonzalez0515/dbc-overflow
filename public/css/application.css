@@ -1,7 +1,5 @@
 #header-table {
-  width: 80%;
-  margin: auto;
-  border: 1px solid black;
+  width: 92%;
 }
 
 #header-left {
@@ -9,19 +7,42 @@
 }
 
 #header-right {
-  align-items: right;
+  align-items: left;
 }
 
 #header-buttons {
   list-style-type: none;
 }
 
+.button-style {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: rgb(202, 60, 60);
+}
+
 body {
+  font-family: Helvetica;
+  max-width: 1200px;
+  margin-left: 9%;
   padding: 20px;
+}
+
+#search-field {
+  margin-left: 0%;
 }
 
 #header-right form {
   display: inline;
+}
+#buttons-user {
+  position: inline-block;
+}
+
+#questions-list {
+  color: #c6400b;
+  font-weight: bold;
+  background-color: #f9f9f9;
 }
 
 #index-question-tables {
@@ -36,17 +57,57 @@ body {
 }
 
 .button-upvote {
-    background:url(https://s11.postimg.org/6sl20t4tv/upvote.jpg) no-repeat;
-    cursor: pointer;
-    width: 50px;
-    height: 45px;
-    border: none;
+  background: url(https://s11.postimg.org/6sl20t4tv/upvote.jpg) no-repeat;
+  cursor: pointer;
+  width: 50px;
+  height: 45px;
+  border: none;
 }
 
 .button-downvote {
-    background:url(https://s22.postimg.org/kc780qhup/f8ca4391f64eb8bba6fd908f4046fb.jpg) no-repeat;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border: none;
+  background: url(https://s22.postimg.org/kc780qhup/f8ca4391f64eb8bba6fd908f4046fb.jpg) no-repeat;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+
+#question-body {
+  background-color: #f4cfbe;
+  text-align: center;
+  padding: 20px;
+  margin-right: 26%;
+}
+
+#comments-to-question {
+  font-size: 10px;
+  background-color: #f7f3f2;
+  padding: 20px;
+  margin-right: 19%;
+
+}
+
+#add-comment {
+  background-color: #f7f3f2;
+  padding: 10px;
+  margin-right: 19%;
+}
+
+#answers {
+  background-color: #fcf3ed;
+  text-align: center;
+}
+
+#comments-to-answer {
+  font-size: 10px;
+  background-color: #f7f3f2;
+  padding: 20px;
+  margin-right: 19%;
+}
+
+#user {
+  text-align: right;
+  font-family: Helvetica;
+  font-style: italic;
+  color: rgb(202, 60, 60);
 }

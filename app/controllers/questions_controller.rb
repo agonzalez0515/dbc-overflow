@@ -1,3 +1,20 @@
+
+
+post '/questions/search' do
+  if params[:question_string].length > 0
+    @results = (Utility.question_search(params[:question_string]))
+  elsif params[:user_string].length > 0
+    @results = (Utility.user_search(params[:user_string]))
+  else
+    @errors = "No Resuts found."
+    erb :index
+  end
+  p '*****************'
+  p @results
+  p '*****************'
+  erb :'/questions/index'
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   # gives back total votes given for a specific question
@@ -20,7 +37,11 @@ post '/questions' do
                             title: params[:title],
                             user_id: params[:user_id]})
   if @question.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'/partials/_new-question', layout: false, locals: {question: @question}
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @error = "Something went wrong! Please, try again"
     redirect '/'
