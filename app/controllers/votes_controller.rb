@@ -12,7 +12,12 @@ post '/questions/:id/votes' do
                     votable_id: params[:votable_id],
                     votable_type: params[:votable_type]})
   if @vote.save
+    if request.xhr?
+      question = Question.find_by(id: params[:votable_id])
+        question.count_votes.to_s
+    else
     redirect "/questions/#{params[:id]}"
+    end
   else
     redirect "/questions/#{params[:id]}"
   end
